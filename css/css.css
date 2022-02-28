@@ -1,3 +1,11 @@
 #phone-details-container{
-    display: none;
+    /* display: none;/ */
+}
+.phn-details-img{
+    height:300px;
+    width: 50px;
+}
+.font-style{
+    color:#1f2729;
+    font-weight: 400;
 }
