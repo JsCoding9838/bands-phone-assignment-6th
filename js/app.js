@@ -1,13 +1,27 @@
+document.getElementById('icorrectInput').style.display = 'none';
 const allPhones = () => {
     const searchValue = document.getElementById('search-box').value;
     // console.log(searchValue);
-    const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
-    // console.log(url);
-    fetch(url)
-    .then(res => res.json())
-    .then(data => showPhones(data.data));
+   
     document.getElementById('search-box').value = '';
+    
+    if(searchValue == ''){
+        // please write somthing
+    }
+    else {
+        // get data
+        const url = `https://openapi.programming-hero.com/api/phones?search=${searchValue}`;
+        fetch(url)
+        .then(res => res.json())
+        .then(data => showPhones(data.data))
+        .catch(error => incorrectValue(error));
+    }
+    
 };
+
+const incorrectValue = error => {
+    document.getElementById('icorrectInput').style.display = 'block';
+}
 
 const showPhones = phones => {
 
@@ -24,10 +38,10 @@ const showPhones = phones => {
                     <img src="${phone.image}" class="card-img-top img-fluid" alt="...">
                 </div>
                 <div class="card-body">
-                    <h5 class="fw-bold card-title">Name:<span> ${phone.phone_name}</span></h5>
-                    <h5 class="fw-bold card-title">Brand: ${phone.brand}</h5>
-                    <h5 class="fw-bold card-title">Slug: ${phone.slug}</h5>
-                    <button type="button" onclick="phoneDetails('${phone.slug}')" class="btn btn-success btn-sm mb-2">See Details</button>
+                    <h5 class="fw-bold card-title">Name: <span class="font-style">${phone.phone_name}</span></h5>
+                    <h5 class="fw-bold card-title">Brand: <span class="font-style">${phone.brand}</span></h5>
+                    <h5 class="fw-bold card-title">Slug: <span class="font-style">${phone.slug}</span></h5>
+                    <button type="button" onclick="phoneDetails('${phone.slug}')" class="btn btn-primary btn-sm mt-2 px-4 py-1 fw-bold fs-4">See Details</button>
                 </div>
             </div>
         `;
