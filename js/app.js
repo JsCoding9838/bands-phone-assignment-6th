@@ -1,20 +1,16 @@
-document.getElementById('icorrectInput').style.display = 'none';
+const spinner = condition => {
+    document.getElementById('spinnerShow').style.display = condition;
+};
 const allPhones = () => {
     // show spinner
     spinner('block');
     const searchValue = document.getElementById('search-box').value;
-    // if(!isNaN(searchValue)){
-    //     console.log(searchValue);
-    // }
-    
    
-
-
     document.getElementById('search-box').value = '';
     
     if(!isNaN(searchValue)) {
         // please write somthing
-        console.log('emty clicked')
+        console.log('input clicked')
 
         document.getElementById('icorrectInput').style.display = 'block';
         document.getElementById('phone-details-container').textContent = '';
@@ -31,35 +27,28 @@ const allPhones = () => {
         .then(data => showPhones(data.data))
         const phnDetailsContainer = document.getElementById('phone-details-container');
         phnDetailsContainer.textContent = '';
-        // .catch(error => incorrectValue(error));
-        console.log('else');
-        // document.getElementById('icorrectInput').style.display = 'none';
+        console.log('input else');
     }
     // stop spnner
     spinner('none');
 };
 
-const incorrectValue = error => {
-    // document.getElementById('icorrectInput').style.display = 'block';
-}
-
 const showPhones = phones => {
-
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.textContent = '';
     // incorrect input value
-    // if(phones.phone_mane){
-    //     console.log('rong');
-    //     document.getElementById('icorrectInput').style.display = 'block';
-    //     document.getElementById('result-not-found').style.display = 'block';
-    // }
-    // else {
-    //     console.log('right')
-    //     document.getElementById('icorrectInput').style.display = 'none';
-    //     document.getElementById('result-not-found').style.display = 'none';
-    //     document.getElementById('phone-details-container').textContent = '';
+    if(phones != ''){
+        console.log('rong');
+        document.getElementById('icorrectInput').style.display = 'none';
+        document.getElementById('result-not-found').style.display = 'none';
+    }
+    else {
+        console.log('right')
+        document.getElementById('icorrectInput').style.display = 'block';
+        document.getElementById('result-not-found').style.display = 'block';
+        // document.getElementById('phone-details-container').textContent = '';
          
-    // };
+    };
 
     phones?.forEach(phone => {
         // console.log(phone);
@@ -119,7 +108,3 @@ const showPhoneDetails = (phoneInfo) => {
     `;
     phnDetailsContainer.appendChild(rowDiv);
 };
-
-const spinner = condition => {
-    document.getElementById('spinnerShow').style.display = condition;
-}

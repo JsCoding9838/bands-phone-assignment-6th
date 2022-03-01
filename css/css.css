@@ -10,7 +10,7 @@
     font-weight: 400;
 }
 #icorrectInput{
-    /* display: none; */
+    display: none;
 }
 #spinnerShow{
     position: absolute;
