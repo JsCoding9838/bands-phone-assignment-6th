@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/css.css">
 </head>
 <body>
-    <h2 class="text-center mt-4">Band's Phone</h2>
+    <h2 id="top-title" class="text-center mt-2 mb-2">Band<span id="top-title-style">'</span>s <span id="top-title-style">Phone</span></h2>
     <!-- Search Phone -->
     <section class="container w-100 m-auto mb-5">
         <div class="row gx-4 w-100 m-auto">
@@ -28,7 +28,7 @@
                 </div>
                 <p id="icorrectInput" class="text-danger fs-6 fw-bold">Something went wrong please input again</p>
                 <!-- Phone Details -->
-                <div id="phone-details-container" class="">
+                <div id="phone-details-container" class="text-wrap">
                     <!--
                     <div class="row">
                         <h4>Phones Details</h4>
@@ -58,17 +58,15 @@
         <div class="row">
             <div id="result-not-found-container" class="col mt-4">
                 <div class="w-100">
-                    <h1 id="result-not-found" class="text-center display-5 mt-5 fw-bold w-100">
-                        "Result Not Found"
+                    <h1 id="result-not-found" class="text-center display-5 mt-1 fw-bold w-100">
+                        <img class="text-center mt-5 w-50" class="img-fluid w-50 h-50" src="./images/page-not-found.gif" alt="">
                     </h1>
+                    
                 </div>
                 <div class="w-100">
                     <img id="spinnerShow" class="img-fluid w-50 h-50" src="./images/spinnervlll.gif" alt="">
                 </div>
             </div>
-            <!-- <div class="border border-danger text-center">
-                
-            </div> -->
         </div>
     </section>
     <!--  All Phones show section -->

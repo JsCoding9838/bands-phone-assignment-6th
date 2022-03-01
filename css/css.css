@@ -1,7 +1,37 @@
-/* card ing size */
+html{
+    /* background-color: rgb(241, 235, 235); */
+}
+body{
+    background-color: rgb(242, 245, 245);
+}
+/* top title */
+#top-title{
+    padding: 0;
+    margin: 0;
+    font-size: 45px;
+    color: rgb(44, 137, 44);
+}
+/* top title style */
+#top-title-style{
+    color: rgb(169, 22, 47);
+    font-weight: 600
+}
+/* card image bg color */
+#card{
+    background-color: rgb(248, 244, 244);
+}
+/* details img title */
+#details-img-title{
+    color: green;
+}
+/* card details image size */
 .details-img{
-    height:300px;
-    width: 50px;
+    height:400px;
+    width: 300px;
+    margin-top: 35px;
+}
+#phone-details-container{
+    overflow: hidden;
 }
 /* phone text details styles */
 .font-style{
