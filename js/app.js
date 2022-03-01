@@ -1,12 +1,27 @@
 document.getElementById('icorrectInput').style.display = 'none';
 const allPhones = () => {
+    // show spinner
+    spinner('block');
     const searchValue = document.getElementById('search-box').value;
-    // console.log(searchValue);
+    // if(!isNaN(searchValue)){
+    //     console.log(searchValue);
+    // }
+    
    
+
+
     document.getElementById('search-box').value = '';
     
-    if(searchValue == ''){
+    if(!isNaN(searchValue)) {
         // please write somthing
+        console.log('emty clicked')
+
+        document.getElementById('icorrectInput').style.display = 'block';
+        document.getElementById('phone-details-container').textContent = '';
+        document.getElementById('result-not-found').style.display = 'block';
+        const phoneContainer = document.getElementById('phone-container');
+        phoneContainer.textContent = '';
+        
     }
     else {
         // get data
@@ -14,20 +29,39 @@ const allPhones = () => {
         fetch(url)
         .then(res => res.json())
         .then(data => showPhones(data.data))
-        .catch(error => incorrectValue(error));
+        const phnDetailsContainer = document.getElementById('phone-details-container');
+        phnDetailsContainer.textContent = '';
+        // .catch(error => incorrectValue(error));
+        console.log('else');
+        // document.getElementById('icorrectInput').style.display = 'none';
     }
-    
+    // stop spnner
+    spinner('none');
 };
 
 const incorrectValue = error => {
-    document.getElementById('icorrectInput').style.display = 'block';
+    // document.getElementById('icorrectInput').style.display = 'block';
 }
 
 const showPhones = phones => {
 
     const phoneContainer = document.getElementById('phone-container');
+    phoneContainer.textContent = '';
+    // incorrect input value
+    // if(phones.phone_mane){
+    //     console.log('rong');
+    //     document.getElementById('icorrectInput').style.display = 'block';
+    //     document.getElementById('result-not-found').style.display = 'block';
+    // }
+    // else {
+    //     console.log('right')
+    //     document.getElementById('icorrectInput').style.display = 'none';
+    //     document.getElementById('result-not-found').style.display = 'none';
+    //     document.getElementById('phone-details-container').textContent = '';
+         
+    // };
 
-    phones.forEach(phone => {
+    phones?.forEach(phone => {
         // console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
@@ -45,8 +79,11 @@ const showPhones = phones => {
                 </div>
             </div>
         `;
+        
         phoneContainer.appendChild(div);
+        
     });
+    
     
 }
 
@@ -59,24 +96,30 @@ const phoneDetails = (phoneName) => {
 };
 
 const showPhoneDetails = (phoneInfo) => {
-    console.log(phoneInfo.slug);
-    console.log(phoneInfo.mainFeatures.storage);
-    console.log(phoneInfo.mainFeatures.sensors);
-
-    document.getElementById('phone-details-container').innerHTML = `
-        <div class="row">
-            <h4>Phones Details</h4>
-            <div class="col-md-6 mx-auto mb-3">
-                <img src="${phoneInfo.image}" class="phn-details-img w-50 card-img-top img-fluid" alt="phone-image">
-            </div>
-            <div class="col-md-6 text-start p-4 align-items-center mt-4">
-                <h6 class="fw-bold">Name: <span class="font-style">${phoneInfo.name}</span></h6>
-                <h6 class="fw-bold">ReleaseDate: <span class="font-style">${phoneInfo.releaseDate}</span></h6>
-                <h6 class="fw-bold">ChipSet: <span class="font-style">${phoneInfo.mainFeatures.chipSet}</span></h6>
-                <h6 class="fw-bold">Storage: <span class="font-style">${phoneInfo.mainFeatures.storage}</span></h6>
-                <h6 class="fw-bold">DisplaySize: <span class="font-style">${phoneInfo.mainFeatures.displaySize}</span></h6>
-                <h6 class="fw-bold">Memory: <span class="font-style">${phoneInfo.mainFeatures.memory}</span></h6>
-            </div>
+    // console.log(phoneInfo.slug);
+    // console.log(phoneInfo.mainFeatures.storage);
+    // console.log(phoneInfo.mainFeatures.sensors);
+    const phnDetailsContainer = document.getElementById('phone-details-container');
+    phnDetailsContainer.textContent = '';
+    const rowDiv = document.createElement('div');
+    rowDiv.classList.add('row');
+    rowDiv.innerHTML = `
+        <h4>Phone Details</h4>
+        <div class="col-md-6 mx-auto mb-3">
+            <img src="${phoneInfo.image}" class="phn-details-img w-50 card-img-top img-fluid" alt="phone-image">
+        </div>
+        <div class="col-md-6 text-start p-4 align-items-center mt-4">
+            <h6 class="fw-bold">Name: <span class="font-style">${phoneInfo.name}</span></h6>
+            <h6 class="fw-bold">ReleaseDate: <span class="font-style">${phoneInfo.releaseDate ? phoneInfo.releaseDate : 'No ReleaseDate found'}</span></h6>
+            <h6 class="fw-bold">ChipSet: <span class="font-style">${phoneInfo.mainFeatures.chipSet}</span></h6>
+            <h6 class="fw-bold">Storage: <span class="font-style">${phoneInfo.mainFeatures.storage}</span></h6>
+            <h6 class="fw-bold">DisplaySize: <span class="font-style">${phoneInfo.mainFeatures.displaySize}</span></h6>
+            <h6 class="fw-bold">Memory: <span class="font-style">${phoneInfo.mainFeatures.memory}</span></h6>
         </div>
     `;
+    phnDetailsContainer.appendChild(rowDiv);
+};
+
+const spinner = condition => {
+    document.getElementById('spinnerShow').style.display = condition;
 }

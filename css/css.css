@@ -12,3 +12,12 @@
 #icorrectInput{
     /* display: none; */
 }
+#spinnerShow{
+    position: absolute;
+    display: none;
+}
+/* Result not found */
+#result-not-found{
+    display: none;
+    margin-top: 200px;
+}
