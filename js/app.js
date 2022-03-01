@@ -32,7 +32,7 @@ const allPhones = () => {
     // stop spnner
     spinner('none');
 };
-
+// show all phones
 const showPhones = phones => {
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.textContent = '';
@@ -46,12 +46,17 @@ const showPhones = phones => {
         console.log('right')
         document.getElementById('icorrectInput').style.display = 'block';
         document.getElementById('result-not-found').style.display = 'block';
-        // document.getElementById('phone-details-container').textContent = '';
          
     };
+    // const newValue = phones.slice(0, 20);
+    // const newValue2 = phones.slice(0, 30);
 
-    phones?.forEach(phone => {
+    // less than 20 phones
+    // newValue2?.forEach(phone => {
         // console.log(phone);
+
+
+    for(const phone of phones.slice(0, 20)){
         const div = document.createElement('div');
         div.classList.add('col');
 
@@ -71,7 +76,7 @@ const showPhones = phones => {
         
         phoneContainer.appendChild(div);
         
-    });
+    };
     
     
 }
@@ -95,7 +100,7 @@ const showPhoneDetails = (phoneInfo) => {
     rowDiv.innerHTML = `
         <h4>Phone Details</h4>
         <div class="col-md-6 mx-auto mb-3">
-            <img src="${phoneInfo.image}" class="phn-details-img w-50 card-img-top img-fluid" alt="phone-image">
+            <img src="${phoneInfo.image}" class="details-img w-50 card-img-top img-fluid" alt="phone-image">
         </div>
         <div class="col-md-6 text-start p-4 align-items-center mt-4">
             <h6 class="fw-bold">Name: <span class="font-style">${phoneInfo.name}</span></h6>

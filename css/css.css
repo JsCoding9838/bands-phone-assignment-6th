@@ -1,23 +1,27 @@
-#phone-details-container{
-    /* display: none;/ */
-}
-.phn-details-img{
+/* card ing size */
+.details-img{
     height:300px;
     width: 50px;
 }
+/* phone text details styles */
 .font-style{
     color:#1f2729;
     font-weight: 400;
 }
+/* incorrect input error */
 #icorrectInput{
     display: none;
 }
+/* loading spinner */
 #spinnerShow{
-    position: absolute;
     display: none;
 }
 /* Result not found */
+#result-not-found-container{
+    text-align: center;
+    width: 500px;
+}
+/* result not found */
 #result-not-found{
     display: none;
-    margin-top: 200px;
 }
