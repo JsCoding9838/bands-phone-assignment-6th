@@ -1,12 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Monoton&family=Poppins:wght@400;500;600&family=Shizuru&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Shizuru&display=swap');
 body{
-    background-color: rgb(242, 245, 245);
+    background-color: rgb(230, 226, 226);
 }
 /* top title */
 #top-title{
     padding: 0;
     margin: 0;
-    font-size: 45px;
+    font-size: 35px;
     color: rgb(44, 137, 44);
+    font-family: 'Monoton', cursive;
 }
 /* top title style */
 #top-title-style{
@@ -15,11 +18,13 @@ body{
 }
 /* card image bg color */
 #card{
-    background-color: rgb(248, 244, 244);
+    background-color: rgb(235, 224, 224);
 }
 /* details img title */
 #details-img-title{
-    color: #0bfc03;
+    color: #0356fc;
+    font-weight: 700;
+    font-family: 'Shizuru', cursive;
 }
 /* card details image size */
 .details-img{
@@ -30,6 +35,7 @@ body{
 /* phone details container */
 #phone-details-container{
     overflow: hidden;
+    background-color: rgba(234, 240, 240, 0.469);
 }
 /* phone text details styles */
 .font-style{
@@ -61,6 +67,7 @@ body{
 #see-more{
     display: none;
     color: rgb(0, 102, 255);
+    transition: 0.4s ease;
 }
 #see-more:hover{
     background-color:rgb(0, 102, 255);

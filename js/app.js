@@ -121,6 +121,7 @@ const showPhones = phones => {
         /* call hidden function */
         showHiddenButton('none');
     });
+    spinner('none');
 };
 /* Toggle  See more Buttton */
 const showHiddenButton = (condition) => {
@@ -140,7 +141,7 @@ const showPhoneDetails = (phoneInfo) => {
     const rowDiv = document.createElement('div');
     rowDiv.classList.add('row');
     rowDiv.innerHTML = `
-        <h4 id="details-img-title">Phone Details 2022</h4>
+        <h4 id="details-img-title">Udate Details 2022</h4>
         <div class="col-md-6 mx-auto">
             <img src="${phoneInfo.image}" class="details-img img-fluid" alt="phone-image">
         </div>
