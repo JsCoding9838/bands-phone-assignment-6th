@@ -19,7 +19,7 @@ body{
 }
 /* details img title */
 #details-img-title{
-    color: rgb(21, 141, 226);
+    color: #0bfc03;
 }
 /* card details image size */
 .details-img{
@@ -53,7 +53,16 @@ body{
 #result-not-found{
     display: none;
 }
+/* card button */
+#card-btn{
+    border-style: none;
+}
 /* See More button */
 #see-more{
     display: none;
+    color: rgb(0, 102, 255);
+}
+#see-more:hover{
+    background-color:rgb(0, 102, 255);
+    color: white;
 }
