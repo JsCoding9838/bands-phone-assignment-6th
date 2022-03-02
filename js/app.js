@@ -1,23 +1,16 @@
-const spinner = condition => {
-    document.getElementById('spinnerShow').style.display = condition;
-};
 const allPhones = () => {
-    // show spinner
+    /* Show Spinner */
     spinner('block');
+    /* Get Input Value */
     const searchValue = document.getElementById('search-box').value;
-   
     document.getElementById('search-box').value = '';
-    
+    /* Check Input Field */
     if(!isNaN(searchValue)) {
-        // please write somthing
-        console.log('input clicked')
-
         document.getElementById('icorrectInput').style.display = 'block';
         document.getElementById('phone-details-container').textContent = '';
         document.getElementById('result-not-found').style.display = 'block';
         const phoneContainer = document.getElementById('phone-container');
         phoneContainer.textContent = '';
-        
     }
     else {
         // get data
@@ -27,67 +20,124 @@ const allPhones = () => {
         .then(data => showPhones(data.data))
         const phnDetailsContainer = document.getElementById('phone-details-container');
         phnDetailsContainer.textContent = '';
-        console.log('input else');
-    }
-    // stop spnner
+    };
+    /* stop spinner */
     spinner('none');
 };
-// show all phones
+/* show all phones */
 const showPhones = phones => {
+    /* empty previous content */
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.textContent = '';
-    // incorrect input value
+    /* incorrect input value */
     if(phones != ''){
-        console.log('rong');
+        // console.log('rong');
         document.getElementById('icorrectInput').style.display = 'none';
         document.getElementById('result-not-found').style.display = 'none';
     }
     else {
-        console.log('right')
         document.getElementById('icorrectInput').style.display = 'block';
         document.getElementById('result-not-found').style.display = 'block';
-         
     };
-    // const newValue = phones.slice(0, 20);
-    // const newValue2 = phones.slice(0, 30);
-    // less than 20 phones
-    // newValue2?.forEach(phone => {
-    for(const phone of phones){
-        const div = document.createElement('div');
-        div.classList.add('col');
-
-        div.innerHTML = `
-            <div id="card" class="card h-100">
-                <div class="mx-auto">
-                    <img src="${phone.image}" class="card-img-top img-fluid" alt="card-image">
-                </div>
-                <div class="card-body">
-                    <h5 class="fw-bold card-title">Name: <span class="font-style">${phone.phone_name}</span></h5>
-                    <h5 class="fw-bold card-title">Brand: <span class="font-style">${phone.brand}</span></h5>
-                    <h5 class="fw-bold card-title">Slug: <span class="font-style">${phone.slug}</span></h5>
-                    
-
-                    <div class="d-grid gap-2 col-6 mx-auto">
-                        <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary mt-2 fw-bold fs-5" type="button">See Details</button>
+    /* Show Hide condition */
+    if(phones.length >= 20) {
+        /* well be show 20 phones from all phones */
+        for(const phone of phones.slice(0, 20)){
+            const div = document.createElement('div');
+            div.classList.add('col');
+    
+            div.innerHTML = `
+                <div id="card" class="card h-100">
+                    <div class="mx-auto">
+                        <img src="${phone.image}" class="card-img-top img-fluid" alt="card-image">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-bold card-title">Name: <span class="font-style">${phone.phone_name}</span></h5>
+                        <h5 class="fw-bold card-title">Brand: <span class="font-style">${phone.brand}</span></h5>
+                        <h5 class="fw-bold card-title">Slug: <span class="font-style">${phone.slug}</span></h5>
+                        
+    
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary mt-2 fw-bold fs-5" type="button">See Details</button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        `;
-        phoneContainer.appendChild(div);
-        
+            `;
+            phoneContainer.appendChild(div);
+            
+        };
+        /* call show button fanction */
+        showHiddenButton('block');
+    }
+    else{
+        /* will be show less than 20 */
+        for(const phone of phones){
+            const div = document.createElement('div');
+            div.classList.add('col');
+    
+            div.innerHTML = `
+                <div id="card" class="card h-100">
+                    <div class="mx-auto">
+                        <img src="${phone.image}" class="card-img-top img-fluid" alt="card-image">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-bold card-title">Name: <span class="font-style">${phone.phone_name}</span></h5>
+                        <h5 class="fw-bold card-title">Brand: <span class="font-style">${phone.brand}</span></h5>
+                        <h5 class="fw-bold card-title">Slug: <span class="font-style">${phone.slug}</span></h5>
+                        
+    
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary mt-2 fw-bold fs-5" type="button">See Details</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            phoneContainer.appendChild(div);
+        };
     };
+    /* see more button */
+    document.getElementById('see-more').addEventListener('click', function() {
+        const phoneContainer = document.getElementById('phone-container');
+        phoneContainer.textContent = '';
+        for(const phone of phones){
+            const div = document.createElement('div');
+            div.classList.add('col');
     
+            div.innerHTML = `
+                <div id="card" class="card h-100">
+                    <div class="mx-auto">
+                        <img src="${phone.image}" class="card-img-top img-fluid" alt="card-image">
+                    </div>
+                    <div class="card-body">
+                        <h5 class="fw-bold card-title">Name: <span class="font-style">${phone.phone_name}</span></h5>
+                        <h5 class="fw-bold card-title">Brand: <span class="font-style">${phone.brand}</span></h5>
+                        <h5 class="fw-bold card-title">Slug: <span class="font-style">${phone.slug}</span></h5>
+                        
     
-}
-
-const phoneDetails = (phoneName) => {
-    // console.log(phoneName);
-    const url = `https://openapi.programming-hero.com/api/phone/${phoneName}`;
+                        <div class="d-grid gap-2 col-6 mx-auto">
+                            <button onclick="phoneDetails('${phone.slug}')" class="btn btn-primary mt-2 fw-bold fs-5" type="button">See Details</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+            phoneContainer.appendChild(div);
+        };
+        /* call hidden function */
+        showHiddenButton('none');
+    });
+};
+/* Toggle  See more Buttton */
+const showHiddenButton = (condition) => {
+    document.getElementById('see-more').style.display = condition;
+};
+/* get all phones id */
+const phoneDetails = (phoneId) => {
+    const url = `https://openapi.programming-hero.com/api/phone/${phoneId}`;
     fetch(url)
     .then(res => res.json())
     .then(data => showPhoneDetails(data.data))
 };
-
+/* Show Phone Details */
 const showPhoneDetails = (phoneInfo) => {
     const phnDetailsContainer = document.getElementById('phone-details-container');
     phnDetailsContainer.textContent = '';
@@ -115,4 +165,8 @@ const showPhoneDetails = (phoneInfo) => {
         </div>
     `;
     phnDetailsContainer.appendChild(rowDiv);
+};
+/* loadding spinner */
+const spinner = condition => {
+    document.getElementById('spinnerShow').style.display = condition;
 };

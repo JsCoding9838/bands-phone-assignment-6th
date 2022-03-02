@@ -18,6 +18,7 @@
     <section class="container w-100 m-auto mb-5">
         <div class="row gx-4 w-100 m-auto">
             <div class="text-center">
+                <!-- Search area -->
                 <div class="input-group mb-3">
                     <input id="search-box" type="text" class="form-control" placeholder="Search Phone" aria-label="Search" aria-describedby="basic-addon2">
                     
@@ -26,43 +27,26 @@
                     </div>
                 
                 </div>
+                <!-- Rong Input Error Show -->
                 <p id="icorrectInput" class="text-danger fs-6 fw-bold">Something went wrong please input again</p>
                 <!-- Phone Details -->
                 <div id="phone-details-container" class="text-wrap">
-                    <!--
-                    <div class="row">
-                        <h4>Phones Details</h4>
-                        <div class="col-md-6 mx-auto mb-3">
-                            <img src="./images/female.png" class="phn-details-img w-50 card-img-top img-fluid" alt="...">
-                        </div>
-                        <div class="col-md-6 mx-auto">
-                            <h6>name: iPhone</h6>
-                            <h6>Band: China</h6>
-                            <h6>Band: Chinasdfdsfs</h6>
-                            <h6>Band: China</h6>
-                            <h6>
-                                Band: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quos alias molestias quo veniam. Animi
-                                provident natus quae voluptates quibusdam, esse cumque laboriosam error, quis dolor porro officiis
-                                reiciendis ab ipsum?
-                            </h6>
-                        </div>
-                    </div>
-                   -->
-                   
+
                 </div>
             </div>
         </div>
     </section>
-    <!-- Result Not Found -->
+    <!-- Result Not Found  Section-->
     <section class="container">
         <div class="row">
             <div id="result-not-found-container" class="col mt-4">
+                <!-- Result Not found Error image -->
                 <div class="w-100">
                     <h1 id="result-not-found" class="text-center display-5 mt-1 fw-bold w-100">
                         <img class="text-center mt-5 w-50" class="img-fluid w-50 h-50" src="./images/page-not-found.gif" alt="">
                     </h1>
-                    
                 </div>
+                <!-- Reload Spinner -->
                 <div class="w-100">
                     <img id="spinnerShow" class="img-fluid w-50 h-50" src="./images/spinnervlll.gif" alt="">
                 </div>
@@ -70,29 +54,16 @@
         </div>
     </section>
     <!--  All Phones show section -->
-    <section class="container w-100 m-auto">
+    <section class="container w-100 m-auto mb-4">
+
         <div id="phone-container" class="row row-cols-1 row-cols-md-3 g-4">
-            <!--
-            <div class="col">
-                <div class="card h-100">
-                    <div class="mx-auto">
-                        <img src="./images/female.png" class="card-img-top img-fluid" alt="...">
-                    </div>
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <h5 class="card-title">Card title</h5>
-                        <h5 class="card-title">Card title</h5>
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">
-                            This is a wider card with supporting text below as a natural lead-in to
-                        </p>
-                        <button type="button" class="btn btn-primary btn-lg mx-auto">Phone Details</button>
-                    </div>
-                </div>
-            </div>
-            -->
-            
+            <!-- All phones show here -->
         </div>
+        <!-- See More Button -->
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button id="see-more" class="btn btn-success me-md-2" type="button">See More</button>
+        </div>
+
     </section>
 
 
